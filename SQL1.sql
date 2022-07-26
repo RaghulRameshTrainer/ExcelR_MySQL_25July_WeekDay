@@ -1,0 +1,66 @@
+CREATE DATABASE IF NOT EXISTS training;
+-- DROP DATABASE training;
+
+use training;
+
+CREATE TABLE customer(
+custid INT,
+custname VARCHAR(20),
+gender CHAR(1),
+age INT,
+city VARCHAR(20),
+mobile VARCHAR(20),
+amount DECIMAL(20,2)
+);
+
+-- LOAD DATA INTO THE TABLE
+
+INSERT INTO customer VALUES(1000,'Raghul Ramesh','M',38,'Chennai','+91-9874789112',100000);
+INSERT INTO customer VALUES(1001,'Ashwin Sekar','M',17,'Bangalore','+91-9874789111',200000);
+INSERT INTO customer VALUES(1002,'Tharani Priya','F',29,'Hyderabad','8870901211',250000);
+INSERT INTO customer(custid,custname,gender,age,city,amount) VALUES(1003,'Durga Devi','F',30,'Pune',300000);
+INSERT INTO customer(custid,custname,gender,city,amount) VALUES(1004,'Aveek Sharma','M','New Delhi',500000);
+INSERT INTO CUSTOMER VALUES(1005,'Bala Murugan','M',40,'Chennai','9876543210',100000),(1006,'Irfan Mohammed','M',41,'Mumbai','9099813112',1000000),
+(1007,'Saraswathi','F',36,'Bangalore','+91-9898987666',2000000);
+
+-- INSERT, UPDATE, DELETE , SELECT 
+-- COMMIT, ROLLBACK
+
+SELECT * FROM customer;
+SELECT * FROM CUSTOMER WHERE city='CHENNAI';
+SELECT * FROM CUSTOMER WHERE city='Bangalore';
+SELECT * FROM CUSTOMER WHERE gender='M' and age < 30 ;
+SELECT * FROM CUSTOMER WHERE gender='F' or AGE > 25;
+SELECT custname,city FROM CUSTOMER WHERE gender='F' or AGE > 25;
+SELECT * FROM CUSTOMER WHERE AGE >= 25 and age <= 40;
+SELECT * FROM CUSTOMER WHERE AGE BETWEEN 29 AND 40;
+
+-- UPDATE DATA
+
+SELECT * FROM CUSTOMER;
+SET SQL_SAFE_UPDATES=0;
+
+UPDATE CUSTOMER SET mobile='9999999999' WHERE custid=1003;
+UPDATE CUSTOMER SET age=100, mobile='9876543215' WHERE custid=1004;
+UPDATE CUSTOMER SET city='Bangalore'  WHERE custid=1005;
+UPDATE CUSTOMER SET age=45 , amount=10000000 WHERE custid=1004;
+
+-- DELETE DATA
+
+SELECT * FROM CUSTOMER;
+
+DELETE FROM CUSTOMER WHERE age=17;
+DELETE FROM CUSTOMER WHERE custid=1006;
+-- UPDATE CUSTOMER SET age=NULL WHERE custid=1003;
+DELETE FROM CUSTOMER WHERE gender='M';
+DELETE FROM CUSTOMER WHERE age is NULL;
+
+
+- DATA TYPES IN MYSQL      ctrl +  /
+-- INT
+-- CHAR(10)   - Pune
+-- VARCHAR(10) - Pune
+-- DECIMAL (10,2)  - 50000.25
+-- DOUBLE
+--  DATE
+--  DATETIME
